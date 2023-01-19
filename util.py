@@ -28,4 +28,5 @@ def session_scope():
     finally:
         session.close()
 
+
 Base = declarative_base()
