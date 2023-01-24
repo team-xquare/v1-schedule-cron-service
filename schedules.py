@@ -1,6 +1,7 @@
 from sqlalchemy import Column, VARCHAR, DATE, BINARY, Integer
 from util import Base
 
+
 class Schedules(Base):
     __tablename__ = 'schedule'
 
