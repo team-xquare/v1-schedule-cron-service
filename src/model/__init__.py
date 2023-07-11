@@ -4,7 +4,9 @@ from contextlib import contextmanager
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.orm import sessionmaker, scoped_session, Session
+
+Base = declarative_base()
 
 
 @contextmanager
@@ -17,8 +19,8 @@ def session_scope():
         max_overflow=20,
         pool_pre_ping=True
     )
-    Session = scoped_session(sessionmaker(bind=engine, autocommit=False, autoflush=False, expire_on_commit=False))
-    session = Session()
+
+    session = scoped_session(sessionmaker(bind=engine, autocommit=False, autoflush=True, expire_on_commit=False))
     try:
         yield session
         session.commit()
@@ -29,4 +31,6 @@ def session_scope():
         session.close()
 
 
-Base = declarative_base()
+class BaseMixin:
+    def save(self, session: Session):
+        session.add(self)
