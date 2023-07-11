@@ -9,6 +9,7 @@ from src.service.outbound.neis import neis_request
 
 
 def get_schedule(session: Session, time_range: TimeRange):
+ 
     date = datetime.now().date()
 
     if time_range == TimeRange.week:
@@ -31,6 +32,7 @@ def get_schedule(session: Session, time_range: TimeRange):
             is_schedules.name = i['name']
         else:
             Schedules(**i, id=uuid4().bytes_le).save(session=session)
+
     return HTTPException(status_code=status.HTTP_200_OK)
 
 

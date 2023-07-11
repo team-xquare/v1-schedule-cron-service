@@ -10,3 +10,4 @@ class Schedules(Base, BaseMixin):
 
     class Config:
         orm_mode = True
+        

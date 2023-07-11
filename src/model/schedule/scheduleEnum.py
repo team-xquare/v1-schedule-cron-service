@@ -5,3 +5,4 @@ class TimeRange(str, Enum):
     week = "week"
     month = "month"
     year = "year"
+    
