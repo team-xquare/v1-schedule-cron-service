@@ -10,7 +10,7 @@ from src.service.outbound.neis import neis_request
 
 def get_schedule(session: Session, time_range: TimeRange):
  
-    to_day = datetime.now().date()
+    today = datetime.now().date()
 
     if time_range == TimeRange.week:
         start_date, end_date = get_start_end_date(date=to_day, days=7)
