@@ -10,15 +10,15 @@ from src.service.outbound.neis import neis_request
 
 def get_schedule(session: Session, time_range: TimeRange):
  
-    to_day = datetime.now().date()
+    today = datetime.now().date()
 
     if time_range == TimeRange.week:
-        start_date, end_date = get_start_end_date(date=to_day, days=7)
+        start_date, end_date = get_start_end_date(date=today, days=7)
     elif time_range == TimeRange.month:
-        start_date, end_date = get_start_end_date(date=to_day, days=30)
+        start_date, end_date = get_start_end_date(date=today, days=30)
     elif time_range == TimeRange.year:
-        start_date = str(datetime(year=to_day.year, month=1, day=1).date()).replace("-", "")
-        end_date = str(datetime(year=to_day.year, month=12, day=31).date()).replace("-", "")
+        start_date = str(datetime(year=today.year, month=1, day=1).date()).replace("-", "")
+        end_date = str(datetime(year=today.year, month=12, day=31).date()).replace("-", "")
     else:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="is not enum only week, month, year")
 
