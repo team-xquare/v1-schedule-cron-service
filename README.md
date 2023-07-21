@@ -9,10 +9,16 @@ neis api를 통해서 학사일정을 받아와 DB에 저장하는 api입니다.
 1. 가장 최상위 파이엘 .env 파일 생성 <br>
 2. 해당 파일에 노션에 [인수인계 -> 백엔드 -> 스케쥴](https://www.notion.so/xquare-app/env-8c6f95c4c1e5498388ee5cbd80dbbc7d?pvs=4)에 들어가면 있는 .env 값을 복사해 넣는다
 
-## 1.라이브러리 설치
+## 1.프로젝트 세팅
 
 ```
-pip install -r requirements.txt
+pyton3 -m venv venv 
+
+source venv/bin/activate
+
+pip3 install --upgrade pip 
+
+pip3 install -r requriements.txt 
 ```
 
 ## 2.서버 실행
